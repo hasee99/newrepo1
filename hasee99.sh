@@ -13,8 +13,8 @@ node{
            checkout scm
   }  
   stage('Remote SSH') {
-   // writeFile file: 'abc.sh', text: 'ls -lrt'
-   // sshScript remote: remote, script: "abc.sh"
+   // writeFile file: 'hasee99.sh', text: 'ls -lrt'
+   // sshScript remote: remote, script: "hasee99.sh"
     sshCommand remote : remote, command: "pwd"
       sshCommand remote : remote, command: "cd /home"
     sshCommand remote : remote, command: "pwd"
