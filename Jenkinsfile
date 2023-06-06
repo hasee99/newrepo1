@@ -1,23 +1,45 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
+        stage('check out') {
             steps {
-                echo 'Building..'
+              checkout scm
             }
         }
-        stage('Test') {
+         stage('Build Image') {
             steps {
-                echo 'Testing..'
+              sh 'docker build -t ubun.im:latest .'
             }
         }
-        stage('Deploy') {
+         stage('Tag Image') {
+           
             steps {
-                echo 'Deploying....'
+               sh 'docker tag ubun:latest hasee658/ubun.im:latest'
+            }
+        }
+         stage('Push Image') {
+          
+            steps {
+               sh 'docker login -u hasee658 -p hasee658#'
+                sh 'docker push ubun.im:latest'
             }
         }
     }
+    post { 
+        aborted { 
+            echo 'ABORTED'
+        }
+         success { 
+            echo 'SUCCESS'
+        }
+         failure { 
+            echo 'FAILURE'
+        }
+        changed { 
+            echo 'FAILURE'
+        }
+    }
+    
 }
 
                
