@@ -27,7 +27,7 @@ pipeline {
     }
     post { 
         aborted { 
-            echo 'ABORTED'
+            echo 'ABORTED' 
         }
          success { 
             echo 'SUCCESS'
