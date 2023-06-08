@@ -8,7 +8,7 @@ pipeline {
         }
          stage('Build Image') {
             steps {
-              bat 'docker build -t docimage:latest.'
+              bat 'docker build -t docimage .'
             }
         }
          stage('Tag Image') {
@@ -20,7 +20,7 @@ pipeline {
          stage('Push Image') {
           
             steps {
-               bat 'docker login -u hasee658 -p hasee658#' 
+               bat 'docker login -u hasee658 -p hasee658#'
                 bat 'docker push docimage:latest'
             }
         }
