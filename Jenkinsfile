@@ -14,7 +14,7 @@ pipeline {
          stage('Tag Image') {
            
             steps {
-               bat 'docker tag ubun:latest hasee658/docimage:latest'
+               bat 'docker tag docimage:latest hasee658/docimage:latest'
             }
         }
          stage('Push Image') {
