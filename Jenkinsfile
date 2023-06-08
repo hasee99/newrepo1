@@ -21,7 +21,7 @@ pipeline {
           
             steps {
                bat 'docker login -u hasee658 -p hasee658#'
-                bat 'docker push ubun.im:latest'
+                bat 'docker push ubun.im:latest' 
             }
         }
     }
