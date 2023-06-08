@@ -8,20 +8,20 @@ pipeline {
         }
          stage('Build Image') {
             steps {
-              bat 'docker build -t ubun .'
+              bat 'docker build -t ubun1 .'
             }
         }
          stage('Tag Image') {
            
             steps {
-               bat 'docker tag ubun:latest hasee658/ubun:latest'
+               bat 'docker tag ubun1:latest hasee658/ubun1:latest'
             }
         }
          stage('Push Image') {
           
             steps {
                bat 'docker login -u hasee658 -p hasee658#'
-                bat 'docker push ubun:latest' 
+                bat 'docker push hasee658/ubun1:latest' 
             }
         }
     }
