@@ -8,7 +8,7 @@ pipeline {
         }
          stage('Build Image') {
             steps {
-              bat 'docker build -t docimage:latest .'
+              bat 'docker build -t docimage:latest.'
             }
         }
          stage('Tag Image') {
