@@ -14,13 +14,13 @@ pipeline {
          stage('Tag Image') {
            
             steps {
-               bat 'docker tag ubun1:latest hasee99/ubuntu1:latest'
+               bat 'docker tag ubuntu1:latest hasee99/ubuntu1:latest'
             }
         }
          stage('Push Image') {
           
             steps {
-               bat 'docker login -u hasee658 -p Nasha@786#'
+               bat 'docker login -u hasee658 -p Nasha@786'
                 bat 'docker push hasee658/ubuntu:latest' 
             }
         }
