@@ -20,7 +20,7 @@ pipeline {
          stage('Push Image') {
           
             steps {
-               bat 'docker login -u hasee658 -p hasee658#'
+               bat 'docker login -u hasee658 -p hasee658#' 
                 bat 'docker push ubun.im:latest'
             }
         }
