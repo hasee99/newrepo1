@@ -8,20 +8,20 @@ pipeline {
         }
          stage('Build Image') {
             steps {
-              sh 'docker build -t ubun1 .'
+              bat 'docker build -t ubuntu1 .'
             }
         }
          stage('Tag Image') {
            
             steps {
-               sh 'docker tag ubun1:latest hasee99/ubun1:latest'
+               bat 'docker tag ubun1:latest hasee99/ubuntu1:latest'
             }
         }
          stage('Push Image') {
           
             steps {
-               sh 'docker login -u hasee658 -p Nasha@786#'
-                sh 'docker push hasee658/ubun1:latest' 
+               bat 'docker login -u hasee658 -p Nasha@786#'
+                bat 'docker push hasee658/ubuntu:latest' 
             }
         }
     }
