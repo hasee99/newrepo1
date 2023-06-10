@@ -8,26 +8,29 @@ pipeline {
         }
          stage('Build Image') {
             steps {
-              bat 'docker build -t ubuntu1 .'
+              bat 'docker build -t node001 -f Dockerfile  .'
             }
         }
          stage('Tag Image') {
-           
             steps {
-               bat 'docker tag ubuntu1:latest hasee658/ubuntu1:latest'
+               bat 'docker tag node001 hasee658/node001'
             }
-        }
-         stage('Push Image') {
-          
+         }
+        stage('Push Image') {
             steps {
                bat 'docker login -u hasee658 -p Nasha@786'
-                bat 'docker push ubuntu1:latest hasee658/ubuntu:latest' 
+                bat 'docker push hasee658/node001'
             }
         }
+        stage ('Run Image') {
+            steps {
+            bat 'docker run --name Con0 -p 7775:3070 -d  node001'
+          } 
+      }
     }
     post { 
         aborted { 
-            echo 'ABORTED' 
+            echo 'ABORTED'
         }
          success { 
             echo 'SUCCESS'
@@ -40,7 +43,7 @@ pipeline {
         }
     }
     
-}
+} 
 
                
 
