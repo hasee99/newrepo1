@@ -21,7 +21,7 @@ pipeline {
           
             steps {
                bat 'docker login -u hasee658 -p Nasha@786'
-                bat 'docker push hasee658/ubuntu:latest' 
+                bat 'docker push ubuntu1:latest hasee658/ubuntu:latest' 
             }
         }
     }
