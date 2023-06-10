@@ -24,7 +24,7 @@ pipeline {
         }
         stage ('Run Image') {
             steps {
-            bat 'docker run --name Con0 -p 7775:3070 -d  node001'
+            bat 'docker run --name Con00 -p 7775:3070 -d  node001'
           } 
       }
     }
