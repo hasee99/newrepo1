@@ -1,0 +1,38 @@
+services:
+    DB:
+     image: postgres:latest
+     ports:
+        - "1521:5432"
+     environment:
+       - POSTGRES_HOST_AUTH_METHOD=trust
+       - POSTGRES_PASSWORD=microcare
+     container_name: DB
+     volumes:
+        - "vol_nginx_1:/opt/DB"
+     depends_on:
+        - "MID" 
+    WEB:
+      image: nginx:latest
+      ports:
+         - "7799:80"
+      container_name: WEB
+      volumes:
+         - "vol_nginx_1:/opt/composer"
+      depends_on:
+         - "MID" 
+         - "DB"
+    MID:
+      build: ./
+      image: hasee658/compose_nginx_build:latest
+      ports:
+        - "7766:80"
+      container_name: MID
+      volumes:
+        - "new_compose_vol:/opt/MID"
+volumes:
+     vol_nginx_1:
+           name: vol_nginx_1
+           external: true
+     new_compose_vol:
+            name: new_compose_vol
+            external: false
