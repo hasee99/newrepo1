@@ -1,3 +1,5 @@
+
+    
 pipeline {
     agent any
     stages {
@@ -6,27 +8,27 @@ pipeline {
               checkout scm
             }
         }
-         stage('Build Image') {
+        stage('docker compose stop') {
+          
             steps {
-              bat 'docker build -t node00 -f Dockerfile  .'
+               bat 'docker-compose down'
             }
         }
-         stage('Tag Image') {
+           stage('docker compose start') {
+          
             steps {
-               bat 'docker tag node00 hasee658/node00'
+               bat 'docker-compose up -d'
             }
-         }
-        stage('Push Image') {
+        }
+        
+         stage('push image') {
+          
             steps {
                bat 'docker login -u hasee658 -p Nasha@786'
-                bat 'docker push hasee658/node00'
+                bat 'docker push hasee658/compose_nginx_build:latest'
+               // bat 'docker push hasee658/compose_nginx_build:latest'
             }
         }
-        stage ('Run Image') {
-            steps {
-            bat 'docker run --name Con0m -p 7770:3070 -d  node00'
-          } 
-      }
     }
     post { 
         aborted { 
