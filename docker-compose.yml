@@ -8,7 +8,7 @@ services:
        - POSTGRES_PASSWORD=microcare
      container_name: DB
      volumes:
-        - "vo2:/opt/DB"
+        - "vol_1:/opt/DB"
      depends_on:
         - "MID" 
     WEB:
@@ -17,7 +17,7 @@ services:
          - "7799:80"
       container_name: WEB
       volumes:
-         - "vo2:/opt/composer"
+         - "vol_1:/opt/composer"
       depends_on:
          - "MID" 
          - "DB"
@@ -28,10 +28,10 @@ services:
         - "7766:80"
       container_name: MID
       volumes:
-        - "vo2l:/opt/MID"
+        - "vol_1:/opt/MID"
 volumes:
-     vol_nginx_1:
-           name: vo2
+     vol_1:
+           name: vol_1
            external: true
      new_compose_vol:
             name: new_compose_vol
